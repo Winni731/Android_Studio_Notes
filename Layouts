@@ -1,1 +1,5 @@
+Two ways to create Layouts:
+1. Using an XML file to declare the user interface ahead of time
+2. Writing Kotlin / Java code to create the layout at runtime programmatically.
+
 
