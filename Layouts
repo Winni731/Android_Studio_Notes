@@ -5,5 +5,10 @@ Two ways to create Layouts:
 in class MainActivity extends AppCompatActivity
 -->   setContentView(R.layout.activity_main); 
 -->   set the layout to activity_main.xml file
+-->   R  refers to resources, static files in our project:  
+
+     for UI TextView, EditText atrributes, findViewById --> find the corresponding object
+                                           setText --> update text
+                                          
 
 
