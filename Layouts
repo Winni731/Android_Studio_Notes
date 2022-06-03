@@ -31,10 +31,57 @@ Atrributes:
                                         or from html color picker to find the hex decimal value of the color.
 11. id="@+id/txtWelcome"              --> id for the TextView
 
-
-
 />
 
+***press shift key twice will open the search bar
+
+
+<Button
+
+attributes:
+1. layout_width   --> "wrap_content"        suggest not to use solid numbers since UI will need to auto adjust on different devices
+2. layout_height
+3. text
+4. layout_below="@+id/txtWelcome"     --> set the button below TextView by using id
+5. layout_marginTop="15dp"            
+6. background="@color/colorPrimary"   
+7. onClick="onHelloBtnClicked"/>
+
+onClick button method should be inside MainActivity class, it covers the scope of onCreate method.
+
+public void onHelloBtnCliced (View view) {  // one way to create even listener 
+     TextView txtWelcome = findViewById(R.id.txtWelcome);
+     txtWelcome.setText("Hello Again");    
+}
+
+Another way to implement an onClickListener is to create a button object inside onCreate method.
+
+protected void onCreate(Bundle saveInstanceState) {
+     super.onCreate(saveInstanceState);
+     setContentView(R.layout.activity_main);
+     
+     Button btnHello = findViewById(R.id.btnHello);   --> pass the button id
+     btnHello.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+               System.out.println("Hello");
+          }
+     });
+}
+
+we also can implments view.OnClickListener for our MainActivity class
+     @Override
+     public void onClick(View v) {
+          switch (v.getId()) {
+               case R.id.btnHello:
+                    Toast.makeText(this, "Hello Button Clicked", Toast.LENGTH_SHORT).show();
+                    break;
+               default:
+                    break;
+          }
+     }
+     
+*** Toast can be used to display a text for a defined period of time
 
 (usually, android developer use Text to design UI)
 ConstrainLayout --> RelativeLayout
