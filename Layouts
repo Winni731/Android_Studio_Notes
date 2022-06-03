@@ -9,6 +9,10 @@ in class MainActivity extends AppCompatActivity
 
      for UI TextView, EditText atrributes, findViewById --> find the corresponding object
                                            setText --> update text
-                                          
+
+
+Some Unicode
+char registerTradeMark = '\u00AE';   @@ Register Trade Mark  
+char copyRight = '\u00A9';           @@ Copy Right symbol
 
 
