@@ -15,4 +15,26 @@ Some Unicode
 char registerTradeMark = '\u00AE';   @@ Register Trade Mark  
 char copyRight = '\u00A9';           @@ Copy Right symbol
 
+<TextView
 
+Atrributes:
+1. layout_width
+2. layout_height
+3. text             --> the text you want to display
+4. layout_margin    --> e.g. 100dp
+5. layout_centerHorizontal = "true"   
+6. layout_centerVertical = "true"
+7. layout_centerInParent = "true"     --> center this element inside it's parent element
+8. textSize = "20sp"     --> font size of the text
+9. textSteyle = "bold|italic|normal"    --> three tyles, use pipeline to choose combined styles
+10. textColor = "@color/colorAccent"   --> color can be from another source xml, 
+                                        or from html color picker to find the hex decimal value of the color.
+11. id="@+id/txtWelcome"              --> id for the TextView
+
+
+
+/>
+
+
+(usually, android developer use Text to design UI)
+ConstrainLayout --> RelativeLayout
