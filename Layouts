@@ -83,5 +83,15 @@ we also can implments view.OnClickListener for our MainActivity class
      
 *** Toast can be used to display a text for a defined period of time
 
+<EditText
+
+attributes:
+1. hint="Name"
+2. inputType="textPassword"/>   --> add some level of security
+
+
+
+
 (usually, android developer use Text to design UI)
-ConstrainLayout --> RelativeLayout
+ConstrainLayout --> RelativeLayout:   layout_below feature
+
