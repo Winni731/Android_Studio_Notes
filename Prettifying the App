@@ -37,3 +37,65 @@ tools:context="com.raywenderlich.timefighter.MainActivity">
 Animations
 -------------------------------------------
 -------------------------------------------
+right-click res --> New --> Android resource directory --> New Resource Directory window --> anim Resource type
+right-click anim --> New --> Animation resource file
+
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"> 
+</set>
+
+Edit bounce.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" 
+android:fillAfter="true"
+android:interpolator="@android:anim/bounce_interpolator"> 
+<scale
+android:duration="2000"
+android:fromXScale="2.0"
+android:fromYScale="2.0"
+android:pivotX="50%"
+android:pivotY="50%"
+android:toXScale="1.0"
+android:toYScale="1.0" /> 
+</set>
+
+<set xmlns:android="http://schemas.android.com/apk/res/android" 
+android:fillAfter="true"
+android:interpolator="@android:anim/bounce_interpolator">
+
+fillAfter is true --> the animation won't reset the View to its original position once it's complete.
+
+Interpolators affect the rate the entire animation is performed over time, independent of duraitions set within the transformations.
+
+<scale
+android:duration="2000"            --> 2000 milliseconds (2 seconds)
+android:fromXScale="2.0"
+android:fromYScale="2.0"
+android:pivotX="50%"
+android:pivotY="50%"
+android:toXScale="1.0"
+android:toYScale="1.0" />
+
+to define animation:
+1. scale the animated View to twice its size
+2. shrink it back to its original size
+3. do this over the space of two seconds
+4. using a bouncing interpolator
+
+modify tapMeButton.setOnClickListener callback in onCreate() in MainActivity.kt
+
+tapMeButton.setOnClickListener { v ->
+  val bounceAnimation = AnimationUtils.loadAnimation(this, 
+      R.anim.bounce);
+  v.startAnimation(bounceAnimation) 
+  incrementScore()
+}
+
+every time you click the button, tapMeButton.setOnClickListener loads the bounce animation inside anim and instructs the button 
+                                                                                                         to use that animation.
+
+
+Adding a Dialog
+-------------------------------------------
+-------------------------------------------
