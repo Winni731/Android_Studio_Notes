@@ -99,3 +99,35 @@ every time you click the button, tapMeButton.setOnClickListener loads the bounce
 Adding a Dialog
 -------------------------------------------
 -------------------------------------------
+
+right-click res --> Android resource directory --> Resource type menu --> OK
+right-click menu --> New --> Menu resource file --> file name (main) --> OK
+
+1. set the id for the menu item, name it about_item
+2. move on to the title attribute and name menu item About
+3. click the samll dots next to icon text field in Attributes--> "..."
+4. ic_menu_info in top-left search bar
+5. click the resource under the Android drop-down to select and click OK
+6. set the showAsAction attribute, select Always and click OK
+
+In MainActivity.kt, add below onDestroy():
+
+override fun onCreateOptionsMenu(menu: Menu): Boolean {
+// Inflate the menu; this adds items to the action bar if it is 
+present.
+super.onCreateOptionsMenu(menu)
+  menuInflater.inflate(R.menu.menu, menu)
+return true
+}
+
+Below onCreateOptionsMenu(menu: Menu), add:
+
+override fun onOptionsItemSelected(item: MenuItem): Boolean { 
+if (item.itemId == R.id.about_item) {
+    showInfo() 
+  }
+return true
+}
+
+
+
