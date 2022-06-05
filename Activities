@@ -1,1 +1,24 @@
+package com.raywenderlich.timefighter
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle
+// 1
+class MainActivity : AppCompatActivity() { 
+// 2
+override fun onCreate(savedInstanceState: Bundle?) { 
+// 3
+super.onCreate(savedInstanceState) 
+// 4
+    setContentView(R.layout.activity_main) 
+  }
+}
+
+
+1. MainActivity is declared as extending AppCompatActivity --> first and only Activity in this app, subclassing it is required to 
+                                                               deal with content on the screen
+2. onCreate() is the entry point to this Activity
+
+3. calling the base's implementation of onCreate() is required. --> super.onCreate
+
+4. takes the layout you created and puts it on your device screen by passing in the identifier for the layout
+
 
