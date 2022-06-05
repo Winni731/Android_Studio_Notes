@@ -6,3 +6,135 @@ Lists are a common visual design pattern in apps.
 RecyclerView
 1. setup a RecyclerView Adapter to populate a list with data
 2. setup a ViewHolder to handle the Layout of each item in the list
+
+
+Adding a RecyclerView
+1. content_main.xml --> TextView and delete it
+2. Palette --> Common
+3. click and drag a RecyclerView from the list of components--> OK
+4. Attributes window --> change the ID to lists_recyclerview
+5. click all plus symbols to create constraint connections
+6. set the margins for each connection to 0
+7. set layout_width && layout_height --> match_constraint
+
+
+RecyclerView has two required components it uses to display a list of items: Adapter, ViewHolders.
+1. the RecyclerView asks the Adapter how many items it has
+2. the RecyclerView asks the Adapter for an item or a ViewHolder at a given position
+3. the Adapter reaches into a pool of ViewHolders that have been created
+4. Either a ViewHolder is returned or a new one is created
+5. The Adapter then binds this ViewHolder to a data item at the given position
+6. The ViewHolder is returned to the RecyclerView for display
+
+Adapters give the RecyclerView the data it wants to show.
+ViewHolders are the visual containers for the item. 
+
+**Janking --> refer to dropped or missed frames while rendering
+
+Hooking up a RecyclerView
+above onCreate(savedInstanceState: Bundle?):
+
+lateinit var listsRecyclerView: RecyclerView  --> lateninit keyword: tell compiler that a RecyclerView will be created sometime in the future
+
+to the bottom of onCreate():
+// 1
+listsRecyclerView = findViewById(R.id.lists_recyclerview)
+// 2
+listsRecyclerView.layoutManager = LinearLayoutManager(this) 
+// 3
+listsRecyclerView.adapter = ListSelectionRecyclerViewAdapter()
+
+1. set listsRecyclerView by referencing the ID of the RecyclerView
+2. let the RecyclerView know what kind of layout to present your items in. 
+   --> RecyclerView also provides GridLayoutManager and StaggeredGridLayoutManager
+3. the adapter for the RecyclerView is set, letting it know to use this Adapter to acquire its data to show, and the ViewHolders 
+       to use to populate data with.
+       
+Setting up a RecyclerView Adapter
+right-click com.raywenderlich.listmaker --> New --> Kotlin File/Class
+enter ListSelectionRecyclerViewAdapter --> Kind: Class --> OK
+create a new class ListSelectionViewHolder.kt
+
+class ListSelectionViewHolder(itemView: View) : 
+  RecyclerView.ViewHolder(itemView) {
+}
+
+class ListSelectionRecyclerViewAdapter : 
+RecyclerView.Adapter<ListSelectionViewHolder>() {
+}
+
+class ListSelectionRecyclerViewAdapter :
+RecyclerView.Adapter<ListSelectionViewHolder>() { 
+override fun onCreateViewHolder(p0: ViewGroup, p1: Int):
+ListSelectionViewHolder {
+   TODO("not implemented") //To change body of created functions use 
+File | Settings | File Templates.
+  }
+override fun getItemCount(): Int {
+    TODO("not implemented") //To change body of created functions use 
+File | Settings | File Templates.
+  }
+override fun onBindViewHolder(p0: ListSelectionViewHolder, p1: Int) { 
+    TODO("not implemented") //To change body of created functions use 
+File | Settings | File Templates.
+  } 
+}
+
+add below in top of ListSelectionRecyclerViewAdapter.kt
+val listTitles = arrayOf("Shopping List", "Chores", "Android Tutorials")
+
+override fun getItemCount(): Int { 
+return listTitles.size
+}
+
+creating the ViewHolder
+right-click layout --> list_selection_view_holder
+Root Element -> LinearLayout
+Design --> drag a TextView 
+Attributes --> ID: itemNumber
+           --> layout_width && layout_height: wrap_content
+           --> text: remove placeholder
+Layout_Margin --> all --> 16dp (density pixels)
+Repeat for another TextView
+Change the ID of the second TextView to itemString, etc.
+Attributes --> orientation --> horizontal
+           --> layout_width && layout_height: wrap_content
+           
+In ListSelectionRecyclerViewAdapter.kt, change onCreateViewHolder():
+
+override fun onCreateViewHolder(parent: ViewGroup, 
+             viewType: Int): ListSelectionViewHolder {
+// 1
+val view = LayoutInflater.from(parent.context) 
+            .inflate(R.layout.list_selection_view_holder, 
+              parent,
+false)
+// 2
+return ListSelectionViewHolder(view) 
+}
+
+1. uses a LayoutInflater object to create a layout programmatically.
+   It uses the parent context of the Adapter to create itself and attempts to inflate the Layout you want by passing in the layout name 
+   and the parent ViewGroup.
+   The Boolean value is used to specify whether the view should be attached to the parent. (always false)
+2. the ViewHolder is created from the Layout and returned from the method
+
+
+Binding data to ViewHolder
+
+add below to ListSelectionViewHolder.kt:
+
+val listPosition = itemView.findViewById(R.id.itemNumber) as TextView 
+val listTitle = itemView.findViewById(R.id.itemString) as TextView
+
+change onBindViewHolder() in ListSelectionRecyclerViewAdapter.kt:
+
+override fun onBindViewHolder(holder: ListSelectionViewHolder, position: 
+Int) {
+    holder.listPosition.text = (position + 1).toString() 
+    holder.listTitle.text = listTitles[position]
+}
+
+
+
+
