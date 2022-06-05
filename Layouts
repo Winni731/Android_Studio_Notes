@@ -90,7 +90,8 @@ attributes:
 2. inputType="textPassword"/>   --> add some level of security
 
 
-
+EditText extends TextView
+TextView extends View
 
 (usually, android developer use Text to design UI)
 ConstrainLayout --> RelativeLayout:   layout_below feature
