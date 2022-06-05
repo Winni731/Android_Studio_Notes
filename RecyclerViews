@@ -1,0 +1,8 @@
+Lists are a common visual design pattern in apps.
+1. allow developers to group collections of information together. 
+2. allow users to scroll through and interact with each item in the list
+
+
+RecyclerView
+1. setup a RecyclerView Adapter to populate a list with data
+2. setup a ViewHolder to handle the Layout of each item in the list
