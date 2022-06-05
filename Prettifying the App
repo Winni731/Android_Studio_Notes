@@ -1,0 +1,3 @@
+Changing the app bar color
+
+app>res>values    --> open colors.xml
