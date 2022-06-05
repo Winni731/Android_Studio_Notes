@@ -1,0 +1,50 @@
+In MainActivity.kt, add
+
+//1 
+private val TAG = MainAtivity::class.java.simpleName
+//2
+Log.d(TAG, "onCreate called. Score is: $score")
+
+1. assign the name to TAG
+2. Log a message when the Activity is created. Your app informs you when onCreate() is called and informs you of the current value in Score.
+
+When Android detects a change in orientation, it does three things:
+1. Attempts to save any properties for the Activity specified by the developer.
+2. Destroys the Activity.
+3. Recreates the Activity for the new orientation by calling onCreate(), which resets any properties specified by the developer
+
+Add
+// 1
+companion object {
+private const val SCORE_KEY = "SCORE_KEY" 
+private const val TIME_LEFT_KEY = "TIME_LEFT_KEY"
+}
+
+to MainActivity.kt
+
+Add
+// 2
+override fun onSaveInstanceState(outState: Bundle) {
+super.onSaveInstanceState(outState) 
+  outState.putInt(SCORE_KEY, score)
+  outState.putInt(TIME_LEFT_KEY, timeLeft) 
+  countDownTimer.cancel()
+  Log.d(TAG, "onSaveInstanceState: Saving Score: $score & Time Left: 
+$timeLeft")
+}
+// 3
+override fun onDestroy() { 
+super.onDestroy()
+  Log.d(TAG, "onDestroy called.") 
+}
+
+to onCreate()
+
+1. create a companion object containing two string constants to track the variables you want to save when the orientation changes.
+2. override onSaveInstanceState and insert the values of score and timeLeft into the passed-in Bundle (a hashmap Android uses to pass
+                      values across different screens.). Also cancel the game timer and add a log to track when method is called. 
+3. override onDestroy() --> a method used by the Activity to clean itself up when it is being destroyed. 
+
+
+setup breakpoints --> debug
+
