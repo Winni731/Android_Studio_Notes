@@ -1,3 +1,39 @@
 Changing the app bar color
+-------------------------------------------
+-------------------------------------------
 
 app>res>values    --> open colors.xml
+
+define colors, use <color> tag along with a name attribute as a reference when it's compiled into R.java.
+The reference is available for use in XML layouts and also at runtime
+
+app>res>values    --> styles.xml
+<resources>
+<!-- Base application theme. -->
+<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> 
+<!-- Customize your theme here. -->
+<item name="colorPrimary">@color/colorPrimary</item>
+<item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
+<item name="colorAccent">@color/colorAccent</item>
+</style> 
+</resources>
+
+<item> tags define specific items within the app which adhere to a particular color that updated in colors.xml
+
+app>res>layout    --> activity_main.xml
+switch from Desgin to Text, update ConstraintLayout to change the background color
+
+<android.support.constraint.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/colorBackground"
+tools:context="com.raywenderlich.timefighter.MainActivity">
+
+
+
+Animations
+-------------------------------------------
+-------------------------------------------
