@@ -22,3 +22,4 @@ super.onCreate(savedInstanceState)
 4. takes the layout you created and puts it on your device screen by passing in the identifier for the layout
 
 
+string.xml provides the possibility to support multiple languages. 
