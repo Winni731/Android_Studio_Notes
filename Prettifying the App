@@ -129,5 +129,24 @@ if (item.itemId == R.id.about_item) {
 return true
 }
 
+This method is called whenever a user selects a menu item.
+
+create showInfo() in MainActivity.kt:
+
+private fun showInfo() {
+val dialogTitle = getString(R.string.about_title, 
+      BuildConfig.VERSION_NAME)
+val dialogMessage = getString(R.string.about_message) 
+val builder = AlertDialog.Builder(this)
+  builder.setTitle(dialogTitle)
+  builder.setMessage(dialogMessage)
+  builder.create().show() 
+}
+
+showInfo() handles the setting up of a dialog View. 
+
+create an AlertDialog.Builder and pass in a Context instance to let the Dialog know where to appear.
+select android.support.v7.app.AlertDialog
+
 
 
